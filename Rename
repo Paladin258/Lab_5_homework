@@ -1,0 +1,2 @@
+#### Create ATAC-seq files link to the .fq.gz
+for i in $(ls *.gz); do echo ATAC_$(echo $i | cut -f5,6 -d"_") | xargs ln -s $i; done
