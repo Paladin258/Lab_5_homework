@@ -1,0 +1,9 @@
+#### Create ATAC-seq files link to the .fq.gz
+for i in $(ls *.gz); do echo ATAC_$(echo $i | cut -f5,6 -d"_") | xargs ln -s $i; done
+
+#### Convert DNA-seq file and fastqc
+
+/data/apps/user_contributed_software/namvn1/seqtk/seqtk seq -Q64 -V ADL06_1_1.fq | gzip -c > out.fq.gz
+
+module load fastqc/0.11.2
+fastqc out.fq.gz
